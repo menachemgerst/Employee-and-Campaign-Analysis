@@ -148,7 +148,7 @@ Internal company data of employees, campaigns, and sales
 			GROUP BY C.Campaign_ID, l.lead_id
 		),CTE_2 AS
 		(
-		SELECT	 c.*
+			SELECT	 c.*
 				,o.Order_ID
 				,o.Employee_ID
 				,o.Customer_ID
@@ -167,14 +167,14 @@ Internal company data of employees, campaigns, and sales
 				,CASE WHEN Discount  > 0 THEN F7 * (1.00 - CAST(LEFT(od.Discount, 4) AS float)/100)
 					  ELSE  F7 
 				 END AS 'price'
-		,DATEDIFF(d, o.Date, GETDATE()) AS days_last_order
-		FROM CTE c
-		LEFT JOIN orders o
-		ON c.Lead_ID = o.Lead_ID
-		LEFT JOIN Orders_Detailed od
-		ON  o.Order_ID = od.Order_ID
-		LEFT JOIN items i
-		ON od.Item_ID = i.Item_ID
+				,DATEDIFF(d, o.Date, GETDATE()) AS days_last_order
+			FROM CTE c
+			LEFT JOIN orders o
+			ON c.Lead_ID = o.Lead_ID
+			LEFT JOIN Orders_Detailed od
+			ON  o.Order_ID = od.Order_ID
+			LEFT JOIN items i
+			ON od.Item_ID = i.Item_ID
 		)
 		SELECT	 Campaign_ID
 				,MAX(sum_leads_per_camp) 'leads_camp'
