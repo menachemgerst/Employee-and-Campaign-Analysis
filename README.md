@@ -4,31 +4,31 @@
 ## Employee Bonuses and Successful Campaigns Analysis
 
 
-	Introduction 
-		A small chain of mobile devices is interested in analyzing the employees
-		sales to identify outstanding employees and successful campaigns.
+### Introduction 
+A small chain of mobile devices is interested in analyzing the employees
+sales to identify outstanding employees and successful campaigns.
 
-	The Data
-		Internal company data of employees, campaigns, and sales
+### The Data
+Internal company data of employees, campaigns, and sales
 
 
 ### Step 1:
 ### Understanding what is in the data with this Query:
 
 
-SELECT	schema_name(tab.schema_id) as schema_name
-		,tab.name as table_name
-		,col.column_id
-		,col.name as column_name
-		,t.name as data_type    
-		,col.max_length
-		,col.precision
-FROM sys.tables as tab
-INNER JOIN sys.columns as col
-ON tab.object_id = col.object_id
-LEFT JOIN sys.types as t
-ON col.user_type_id = t.user_type_id
-ORDER BY schema_name
+	SELECT	schema_name(tab.schema_id) as schema_name
+			,tab.name as table_name
+			,col.column_id
+			,col.name as column_name
+			,t.name as data_type    
+			,col.max_length
+			,col.precision
+	FROM sys.tables as tab
+	INNER JOIN sys.columns as col
+	ON tab.object_id = col.object_id
+	LEFT JOIN sys.types as t
+	ON col.user_type_id = t.user_type_id
+	ORDER BY schema_name
 		,table_name 
 		,column_id;
 
