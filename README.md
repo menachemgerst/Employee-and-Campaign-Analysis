@@ -51,18 +51,18 @@ Internal company data of employees, campaigns, and sales
 4.	Items – name and price for each item ID
 
 
-	WITH CTE AS
-	(
-	SELECT	 e.Employee_ID 
-			,COUNT(DISTINCT o.Customer_ID) AS 'unique_customers_per_emp'
-			,COUNT(DISTINCT o.Order_ID) AS 'unique_orders_per_emp'
-	FROM employees e
-	LEFT JOIN orders o
-	ON e.Employee_ID = o.Employee_ID
-	GROUP BY e.Employee_ID
-	),CTE_2 AS
-	(
-	SELECT	 e.*
+		WITH CTE AS
+		(
+			SELECT	 e.Employee_ID 
+				,COUNT(DISTINCT o.Customer_ID) AS 'unique_customers_per_emp'
+				,COUNT(DISTINCT o.Order_ID) AS 'unique_orders_per_emp'
+			FROM employees e
+			LEFT JOIN orders o
+			ON e.Employee_ID = o.Employee_ID
+			GROUP BY e.Employee_ID
+		),CTE_2 AS
+		(
+			SELECT	 e.*
 			,o.Customer_ID
 			,o.Lead_ID
 			,o.Date
@@ -93,26 +93,26 @@ Internal company data of employees, campaigns, and sales
 						   END) OVER (PARTITION BY(o.Order_id)) >= 1000 THEN 1 
 				  ELSE 0
 			 END AS 'indication'
-	FROM CTE c
-	JOIN employees e
-	ON c.Employee_ID = e.Employee_ID
-	LEFT JOIN orders o
-	ON e.Employee_ID = o.Employee_ID
-	LEFT JOIN Orders_Detailed od
-	ON o.Order_ID = od.Order_ID
-	)
-	SELECT	 Employee_ID
-		,MAX(age) AS 'emp_age'
-		,MAX(active_emp) AS 'emp_active'
-		,MAX(unique_customers_per_emp) AS 'total_customers_per_emp'
-		,MAX(days_last_order) AS 'days'
-		,SUM(price) AS 'total_sales_by_emp'
-		,CASE WHEN MAX(unique_orders_per_emp) > 0 THEN SUM(price) / MAX(unique_orders_per_emp)
-		 ELSE 0
-		 END AS 'avg_sales_by_emp'
-	FROM CTE_2
-	GROUP BY Employee_ID
-	ORDER BY SUM(price) DESC
+		FROM CTE c
+		JOIN employees e
+		ON c.Employee_ID = e.Employee_ID
+		LEFT JOIN orders o
+		ON e.Employee_ID = o.Employee_ID
+		LEFT JOIN Orders_Detailed od
+		ON o.Order_ID = od.Order_ID
+		)
+		SELECT	 Employee_ID
+			,MAX(age) AS 'emp_age'
+			,MAX(active_emp) AS 'emp_active'
+			,MAX(unique_customers_per_emp) AS 'total_customers_per_emp'
+			,MAX(days_last_order) AS 'days'
+			,SUM(price) AS 'total_sales_by_emp'
+			,CASE WHEN MAX(unique_orders_per_emp) > 0 THEN SUM(price) / MAX(unique_orders_per_emp)
+			 ELSE 0
+			 END AS 'avg_sales_by_emp'
+		FROM CTE_2
+		GROUP BY Employee_ID
+		ORDER BY SUM(price) DESC
 
 ### SUCCESSFUL CAMPAINS
 
