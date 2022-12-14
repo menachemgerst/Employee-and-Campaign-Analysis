@@ -3,14 +3,14 @@
 
 ## Employee Bonuses and Successful Campaigns Analysis
 
-/*
+
 	Introduction 
 		A small chain of mobile devices is interested in analyzing the employees
 		sales to identify outstanding employees and successful campaigns.
 
 	The Data
 		Internal company data of employees, campaigns, and sales
-*/
+
 
 ### Step 1:
 ### Understanding what is in the data with this Query:
