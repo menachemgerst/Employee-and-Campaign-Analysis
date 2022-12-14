@@ -1,7 +1,7 @@
 # mobile store employees and campaign analysis 
  
 
---Employee Bonuses and Successful Campaigns Analysis
+## Employee Bonuses and Successful Campaigns Analysis
 
 /*
 	Introduction 
@@ -12,10 +12,9 @@
 		Internal company data of employees, campaigns, and sales
 */
 
--- Step 1:
---- Understanding what is in the data with this Query:
+### Step 1:
+### Understanding what is in the data with this Query:
 
-USE Partner
 
 SELECT	schema_name(tab.schema_id) as schema_name
 		,tab.name as table_name
@@ -33,7 +32,7 @@ ORDER BY schema_name
 		,table_name 
 		,column_id;
 
--- EMPLOYEE BONUSES
+### EMPLOYEE BONUSES
 
 /*
 	- Employee id
@@ -116,7 +115,7 @@ FROM CTE_2
 GROUP BY Employee_ID
 ORDER BY SUM(price) DESC
 
--- SUCCESSFUL CAMPAINS
+### SUCCESSFUL CAMPAINS
 
 /*
 	- Campaign_ID
@@ -189,7 +188,7 @@ FROM CTE_2
 GROUP BY Campaign_ID
 ORDER BY MIN(days_last_order) DESC
 
--- INSIGHTS and THOUGHTS
+## INSIGHTS and THOUGHTS
 
 /*
 	1. Employees
