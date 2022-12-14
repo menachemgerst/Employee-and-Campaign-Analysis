@@ -1,4 +1,4 @@
-# mobile store employees and campaign analysis 
+# Mobile Devices Store Employees and Campaign Analysis 
  
 
 ## Employee Bonuses and Successful Campaigns Analysis
