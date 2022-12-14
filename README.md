@@ -32,28 +32,27 @@ Internal company data of employees, campaigns, and sales
 		,table_name 
 		,column_id;
 
-### EMPLOYEE BONUSES
+### 1. EMPLOYEE BONUSES
 
-/*
-	- Employee id
-	- Age
-	- (Number of orders excluding order totals of over 1,000 NIS (and excluding canceled orders)0
-	- Indication if the employee is active
-	- Number of unique costumers for each employee
-	- Number of days that passed since the last order of each employee
-	- Total average order for each employee after discounts and cancelations
 
-		Tables for Solution:
-	1.	Employees – in the table 20 employee id's which represent each employee and his/her personal information
-	2.	Orders – in the table each order id is connected to an employee, customer, and a lead 
+- Employee id
+- Age
+- (Number of orders excluding order totals of over 1,000 NIS (and excluding canceled orders)0
+- Indication if the employee is active
+- Number of unique costumers for each employee
+- Number of days that passed since the last order of each employee
+- Total average order for each employee after discounts and cancelations
+
+### Tables for Solution:
+1.	Employees – in the table 20 employee id's which represent each employee and his/her personal information
+2.	Orders – in the table each order id is connected to an employee, customer, and a lead 
 		(some employees, customers and leads have multiple orders)
-	3.	Orders_detailed – full details for each order, quantity, items, discounts and status
-	4.	Items – name and price for each item ID
+3.	Orders_detailed – full details for each order, quantity, items, discounts and status
+4.	Items – name and price for each item ID
 
-*/
 
-WITH CTE AS
-(
+	WITH CTE AS
+	(
 	SELECT	 e.Employee_ID 
 			,COUNT(DISTINCT o.Customer_ID) AS 'unique_customers_per_emp'
 			,COUNT(DISTINCT o.Order_ID) AS 'unique_orders_per_emp'
@@ -61,8 +60,8 @@ WITH CTE AS
 	LEFT JOIN orders o
 	ON e.Employee_ID = o.Employee_ID
 	GROUP BY e.Employee_ID
-),CTE_2 AS
-(
+	),CTE_2 AS
+	(
 	SELECT	 e.*
 			,o.Customer_ID
 			,o.Lead_ID
@@ -101,8 +100,8 @@ WITH CTE AS
 	ON e.Employee_ID = o.Employee_ID
 	LEFT JOIN Orders_Detailed od
 	ON o.Order_ID = od.Order_ID
-)
-SELECT	 Employee_ID
+	)
+	SELECT	 Employee_ID
 		,MAX(age) AS 'emp_age'
 		,MAX(active_emp) AS 'emp_active'
 		,MAX(unique_customers_per_emp) AS 'total_customers_per_emp'
@@ -111,9 +110,9 @@ SELECT	 Employee_ID
 		,CASE WHEN MAX(unique_orders_per_emp) > 0 THEN SUM(price) / MAX(unique_orders_per_emp)
 		 ELSE 0
 		 END AS 'avg_sales_by_emp'
-FROM CTE_2
-GROUP BY Employee_ID
-ORDER BY SUM(price) DESC
+	FROM CTE_2
+	GROUP BY Employee_ID
+	ORDER BY SUM(price) DESC
 
 ### SUCCESSFUL CAMPAINS
 
