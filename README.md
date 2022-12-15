@@ -191,18 +191,18 @@ Internal company data of employees, campaigns, and sales
 
 
 ### 1. Employees
-a.	age doesnt have an impact
-b.	who are the employees that leave the company? The not affective ones, no/low total/average sales 
+1.	age doesnt have an impact
+2.	who are the employees that leave the company? The not affective ones, no/low total/average sales 
    	or the good ones  the opposite, many customers/high total, and average sales) 
    	get taken a way by other job opportunities
-c.	ability to identify employees deserving bonuse, Would recomand by top average per order
-d.	if it's a commission based salery then calculate employee's percentage per sale
+3.	ability to identify employees deserving bonuse, Would recomand by top average per order
+4.	if it's a commission based salery then calculate employee's percentage per sale
 
 ### 2.	Campaigns
-a. rate best campaign according to highest total of sales
-b. rate best campaign according to number of leads per sale 
-   (the less leads that end in a sale = a better campaign)
-c. rate best campaign according to the number of employees involved in each sale
-   (campaign 452 has a total of 13,885 (average 2314 )but also 6 different employees linked to it, 
-   campaigns 566, 517 and 355 have higher averages and only one employee linked to the campaign)
+1.	rate best campaign according to highest total of sales
+2.	rate best campaign according to number of leads per sale 
+   	(the less leads that end in a sale = a better campaign)
+3.	rate best campaign according to the number of employees involved in each sale
+   	(campaign 452 has a total of 13,885 (average 2314 )but also 6 different employees linked to it, 
+   	campaigns 566, 517 and 355 have higher averages and only one employee linked to the campaign)
 
