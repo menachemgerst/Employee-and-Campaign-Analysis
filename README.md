@@ -1,8 +1,5 @@
-# Mobile Devices Store Employees and Campaign Analysis 
+Employees and Campaign Analysis 
  
-
-## Successful Employees and Campaigns Analysis
-
 
 ### Introduction 
 A small chain of mobile devices is interested in analyzing the employees
