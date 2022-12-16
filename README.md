@@ -37,9 +37,9 @@ Internal company data of employees, campaigns, and sales
 
 - Employee id
 - Age
-- (Number of orders excluding order totals of over 1,000 NIS (and excluding canceled orders)0
+- (Number of orders excluding order totals of over 1,000 NIS (and excluding canceled orders)
 - Indication if the employee is active
-- Number of unique costumers for each employee
+- Number of unique customers for each employee
 - Number of days that passed since the last order of each employee
 - Total average order for each employee after discounts and cancelations
 
